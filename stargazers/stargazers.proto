@@ -1,0 +1,20 @@
+syntax = "proto3";
+package stargazers;
+
+option go_package = "stargazers;stargazerspb";
+
+// Service definition
+service Stargazers {
+    rpc GetStargazers (StargazerRequest) returns (StargazersResponse) {}
+}
+
+// The request message containing the project and repository to query
+message StargazerRequest {
+    string project = 1;
+    string repository = 2;
+}
+
+// The response is the number of "stargazers" on a given GitHub repository
+message StargazersResponse {
+    int64 count = 1;
+}
